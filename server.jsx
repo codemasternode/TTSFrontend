@@ -3,18 +3,22 @@ import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import Template from './template';
 import App from './App';
+import { Helmet } from 'react-helmet'
 
 export default function serverRenderer({ clientStats, serverStats }) {
-	return (req, res, next) => {
-		const context = {};
-		const markup = ReactDOMServer.renderToString(
-			<StaticRouter location={ req.url } context={ context }>
-				<App />
-			</StaticRouter>
-		);
+    return (req, res, next) => {
+        const context = {};
+        const markup = ReactDOMServer.renderToString(
+            <StaticRouter location={req.url} context={context}>
+                <App />
+            </StaticRouter>
+        );
 
-		res.status(200).send(Template({
-			markup: markup,
-		}));
-	};
+        const helmet = Helmet.renderStatic()
+
+        res.status(200).send(Template({
+            markup: markup,
+            helmet: helmet
+        }));
+    };
 }
