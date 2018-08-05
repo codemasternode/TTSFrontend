@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Helmet from 'react-helmet'
 import { Link } from 'react-router-dom';
+import styles from './index.scss'
 
 class Menu extends Component {
     render() {
@@ -26,10 +27,10 @@ class Menu extends Component {
 class Homepage extends Component {
     render() {
         return (
-            <div>
+            <div className={styles.container}>
                 <Helmet
-					title="Welcome to our Homepage"
-				/>
+                    title="Welcome to our Homepage"
+                />
                 <h1>Homepage</h1>
             </div>
         );
@@ -41,8 +42,8 @@ class About extends Component {
         return (
             <div>
                 <Helmet
-					title="Welcome to our About"
-				/>
+                    title="Welcome to our About"
+                />
                 <h1>About</h1>
             </div>
         );
@@ -54,8 +55,8 @@ class Contact extends Component {
         return (
             <div>
                 <Helmet
-					title="Welcome to our Contact"
-				/>
+                    title="Welcome to our Contact"
+                />
                 <h1>Contact</h1>
             </div>
         );
@@ -74,11 +75,11 @@ export default class App extends Component {
                 <Helmet
                     htmlAttributes={{ lang: 'pl', amp: undefined }}
                     titleTemplate="%s | React SSR"
-                    titleAttributes={{itemprop: "name", lang: "pl"}}
-					meta={[
-						{name: "description", content: "Server side rendering example"},
-						{name: "viewport", content: "width=device-width, initial-scale=1"},
-					]}
+                    titleAttributes={{ itemprop: "name", lang: "pl" }}
+                    meta={[
+                        { name: "description", content: "Server side rendering example" },
+                        { name: "viewport", content: "width=device-width, initial-scale=1" },
+                    ]}
                 />
                 <Menu />
                 <Switch>
